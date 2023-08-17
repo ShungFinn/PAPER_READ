@@ -45,7 +45,36 @@ but it doesn't have to be a NP itself
 
 That means a NPC is easier than a NPH, latter is sometimes more complex than former
 
+### water-filling power allocation
 
+it's an algorithm on power allocation, it allocates more power to client with better channel conditions
 
+aim: allocate the power of client $P_i$ to obtain the max channel capacity 
 
+$\sigma^2$: noise
+$h_i$: channel gain of the client i, better the channel condition larger the value
 
+$\underset{P} \max{C}\ = \ \sum\limits^{m}_{i=1}log_2(1+\frac{P_i}{\sigma^2}h_i) $
+
+and the limiting condition:
+$\sum\limits_{i=1}^{m}P_i\ =\ P_{\max} $
+
+and the solution:
+
+1.by Lagrange multiplier method
+$$
+\left\{ \begin{aligned} & u = \frac{P+\sum\limits_{i=1}^{m}{\frac{\sigma^2}{h_i}}}{m}  \\ &P_i = \max\begin{bmatrix}\begin{pmatrix}\mu-\frac{\sigma^2}{h_i}\end{pmatrix},0\end{bmatrix} \end{aligned}
+\right. \ \ \Rightarrow better \ channel \ condition\ ,smaller\  \frac{\sigma^2}{h_i} \ larger \ allocated \ P_i 
+$$
+2.by geometric(GWF)
+
+in GWF we don't have to solve water filling surface $\mu$ 
+
+1. solve the worst client power(WCP)
+2. add the water surface difference to WCP to obtain the power of each client
+
+the water level difference :
+$$
+\delta_{3,2} = d_3 - d_2 = \frac{\sigma^2}{h_3}-\frac{\sigma^2}{h_2}
+$$
+ 
